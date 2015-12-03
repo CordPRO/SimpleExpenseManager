@@ -14,7 +14,7 @@
  *
  */
 
-package lk.ac.mrt.cse.dbs.simpleexpensemanager.data;
+package lk.ac.mrt.cse.dbs.simpleexpensemanager.data.impl.persistent;
 
 import java.util.Date;
 import java.util.List;
