@@ -54,7 +54,7 @@ public class PersistentAccountDAO implements AccountDAO {
                 AccountContract.AccountEntry.COLUMN_NAME_BANK_NAME,
                 AccountContract.AccountEntry.COLUMN_NAME_BALANCE
         };
-        String sortOrder = AccountContract.AccountEntry.COLUMN_NAME_ACCOUNT_NO + " DESC";
+        String sortOrder = AccountContract.AccountEntry.COLUMN_NAME_ACCOUNT_NO;
         Cursor c = db.query(AccountContract.AccountEntry.TABLE_NAME, projection,null,null,null,null,sortOrder,null);
 
         ArrayList<Account> results = new ArrayList<>();

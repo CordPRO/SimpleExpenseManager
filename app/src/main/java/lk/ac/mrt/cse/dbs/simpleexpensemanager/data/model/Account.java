@@ -21,7 +21,7 @@ import java.util.Observable;
 /**
  * This POJO holds the information about an account.
  */
-public class Account extends Observable {
+public class Account  {
     private String accountNo;
     private String bankName;
     private String accountHolderName;
@@ -35,8 +35,7 @@ public class Account extends Observable {
 
         String prevAccountNo = this.accountNo;
         this.accountNo = accountNo;
-        this.setChanged();
-        this.notifyObservers(prevAccountNo);
+
 
     }
 
@@ -47,8 +46,7 @@ public class Account extends Observable {
 
     public void setBankName(String bankName) {
         this.bankName = bankName;
-        this.setChanged();
-        this.notifyObservers(this.accountNo);
+
     }
 
     public String getAccountHolderName() {
@@ -57,8 +55,7 @@ public class Account extends Observable {
 
     public void setAccountHolderName(String accountHolderName) {
         this.accountHolderName = accountHolderName;
-        this.setChanged();
-        this.notifyObservers(this.accountNo);
+
     }
 
     public double getBalance() {
@@ -67,8 +64,7 @@ public class Account extends Observable {
 
     public void setBalance(double balance) {
         this.balance = balance;
-        this.setChanged();
-        this.notifyObservers(this.accountNo);
+
     }
 
     public Account(String accountNo, String bankName, String accountHolderName, double balance) {
