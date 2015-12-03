@@ -20,8 +20,8 @@ import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.model.Transaction;
  */
 public class SQLLiteHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 3;
-    public static final String DATABASE_NAME = "test.db";
+    public static final int DATABASE_VERSION = 4;
+    public static final String DATABASE_NAME = "130614N.db";
 
     private static SQLLiteHelper instance = null;
 
@@ -29,15 +29,15 @@ public class SQLLiteHelper extends SQLiteOpenHelper {
     private  static final String[] SQL_CREATE_ENTRIES =
             {"CREATE TABLE IF NOT EXISTS " + AccountContract.AccountEntry.TABLE_NAME +
             " (" + AccountContract.AccountEntry.COLUMN_NAME_ACCOUNT_NO + " VARCHAR(20) PRIMARY KEY, " +
-            AccountContract.AccountEntry.COLUMN_NAME_ACCOUNT_HOLDER_NAME  + " VARCHAR(50), " +
-            AccountContract.AccountEntry.COLUMN_NAME_BANK_NAME + " VARCHAR (50), "+
-            AccountContract.AccountEntry.COLUMN_NAME_BALANCE + " DECIMAL(10,2) )" ,
+            AccountContract.AccountEntry.COLUMN_NAME_ACCOUNT_HOLDER_NAME  + " VARCHAR(50) NOT NULL, " +
+            AccountContract.AccountEntry.COLUMN_NAME_BANK_NAME + " VARCHAR (50) NOT NULL, "+
+            AccountContract.AccountEntry.COLUMN_NAME_BALANCE + " DECIMAL(10,2) NOT NULL )" ,
             "CREATE TABLE IF NOT EXISTS " + TransactionContract.TransactionEntry.TABLE_NAME +
             " (" + TransactionContract.TransactionEntry.COLUMN_NAME_ENTRY_INDEX + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"+
-                    TransactionContract.TransactionEntry.COLUMN_NAME_ACCOUNT_NO +" VARCHAR(20), " +
-                    TransactionContract.TransactionEntry.COLUMN_NAME_DATE+ " DATE, "+
-                    TransactionContract.TransactionEntry.COLUMN_NAME_AMOUNT+ " DECIMAL(10,2), "+
-                    TransactionContract.TransactionEntry.COLUMN_NAME_EXPENSE_TYPE + " VARCHAR(20) )"
+                    TransactionContract.TransactionEntry.COLUMN_NAME_ACCOUNT_NO +" VARCHAR(20) NOT NULL, " +
+                    TransactionContract.TransactionEntry.COLUMN_NAME_DATE+ " DATE NOT NULL, "+
+                    TransactionContract.TransactionEntry.COLUMN_NAME_AMOUNT+ " DECIMAL(10,2) NOT NULL, "+
+                    TransactionContract.TransactionEntry.COLUMN_NAME_EXPENSE_TYPE + " VARCHAR(20) NOT NULL )"
             };
     private static final String[] SQL_DELETE_ENTRIES = {"DROP TABLE IF EXISTS " + AccountContract.AccountEntry.TABLE_NAME ,
             "DROP TABLE IF EXISTS " + TransactionContract.TransactionEntry.TABLE_NAME};
