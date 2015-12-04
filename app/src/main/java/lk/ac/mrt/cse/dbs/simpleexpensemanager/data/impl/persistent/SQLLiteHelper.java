@@ -20,7 +20,7 @@ import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.model.Transaction;
  */
 public class SQLLiteHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 4;
+    public static final int DATABASE_VERSION = 5;
     public static final String DATABASE_NAME = "130614N.db";
 
     private static SQLLiteHelper instance = null;
@@ -37,7 +37,8 @@ public class SQLLiteHelper extends SQLiteOpenHelper {
                     TransactionContract.TransactionEntry.COLUMN_NAME_ACCOUNT_NO +" VARCHAR(20) NOT NULL, " +
                     TransactionContract.TransactionEntry.COLUMN_NAME_DATE+ " DATE NOT NULL, "+
                     TransactionContract.TransactionEntry.COLUMN_NAME_AMOUNT+ " DECIMAL(10,2) NOT NULL, "+
-                    TransactionContract.TransactionEntry.COLUMN_NAME_EXPENSE_TYPE + " VARCHAR(20) NOT NULL )"
+                    TransactionContract.TransactionEntry.COLUMN_NAME_EXPENSE_TYPE + " VARCHAR(20) NOT NULL," +
+                    "FOREIGN KEY ("+TransactionContract.TransactionEntry.COLUMN_NAME_ACCOUNT_NO+") REFERENCES "+AccountContract.AccountEntry.TABLE_NAME+"("+AccountContract.AccountEntry.COLUMN_NAME_ACCOUNT_NO+") ON UPDATE CASCADE ON DELETE NO ACTION)"
             };
     private static final String[] SQL_DELETE_ENTRIES = {"DROP TABLE IF EXISTS " + AccountContract.AccountEntry.TABLE_NAME ,
             "DROP TABLE IF EXISTS " + TransactionContract.TransactionEntry.TABLE_NAME};
